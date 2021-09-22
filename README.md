@@ -1,7 +1,7 @@
 ovh-api
 ==================
 
-Ce repository permet un des extractions simplifiées via l'API OVH
+Ce repository permet des extractions simplifiées via l'API OVH
 
 
 Requirements
