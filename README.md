@@ -7,7 +7,8 @@ Ce repository permet des extractions simplifiées via l'API OVH
 Requirements
 ------------
 
-Python
+* python
+* pip install ovh
 
 
 Execution
