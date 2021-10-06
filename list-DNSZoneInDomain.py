@@ -21,15 +21,14 @@ domains = client.get('/domain/zone/')
 for domain in domains:
     details = client.get('/domain/zone/%s/export' % domain)
     detailssansovh = re.sub('.*.ovh.net.*', '', details)
-    # print(detailssansovh)
-    # print("\n")
     regex1='.*IN.A.*'
     regex2='.*IN.CNAME.*'
     regexList = [regex1, regex2]
     for regex in regexList:
         filtereddetails = re.findall(regex, detailssansovh)
-        print ('--------------')
-        print (domain)
-        print ('--------------')
-        print (filtereddetails)
+        print ('--------------') # to remove to have correct json
+        print (domain)           # to remove to have correct json
+        print ('--------------') # to remove to have correct json
+        print(json.dumps(filtereddetails, indent=4))
+
 
