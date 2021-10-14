@@ -12,4 +12,4 @@ client = ovh.Client(
 	consumer_key='XXXXXXXXXXXXXXXXXXXXXXX',
 )
 # Print every domain you have
-print("Welcome", client.get('/domain/zone/'))
+print(client.get('/domain/zone/'))
