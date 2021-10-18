@@ -24,13 +24,13 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install ovh
 
-    - name: Lint python scripts
+    - name: Execute python scripts
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         ovh_endpoint: ${{ secrets.ENDPOINT }}
-        application_key: ${{ secrets.APPLICATION_KEY }}
-        application_secret: ${{ secrets.APPLICATION_SECRET }}
-        consumer_key: ${{ secrets.CONSUMER_KEY }}
+        ovh_application_key: ${{ secrets.APPLICATION_KEY }}
+        ovh_application_secret: ${{ secrets.APPLICATION_SECRET }}
+        ovh_consumer_key: ${{ secrets.CONSUMER_KEY }}
       run: |
        python3 list-DNSZoneInDomain.py
        python3 list-domain.py
