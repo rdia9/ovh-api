@@ -27,6 +27,10 @@ jobs:
     - name: Lint python scripts
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        ovh_endpoint: ${{ secrets.ENDPOINT }}
+        application_key: ${{ secrets.APPLICATION_KEY }}
+        application_secret: ${{ secrets.APPLICATION_SECRET }}
+        consumer_key: ${{ secrets.CONSUMER_KEY }}
       run: |
        python3 list-DNSZoneInDomain.py
        python3 list-domain.py
