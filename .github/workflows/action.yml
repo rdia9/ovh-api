@@ -12,13 +12,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: [3.6, 3.7, 3.8, 3.9]
+        python-version: [3.9]
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
@@ -27,6 +25,8 @@ jobs:
         python -m pip install ovh
 
     - name: Lint python scripts
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
        python3 list-DNSZoneInDomain.py
        python3 list-domain.py
