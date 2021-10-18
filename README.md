@@ -20,5 +20,5 @@ python3 list-DNSZoneInDomain.py > DNSZoneList.csv
 
 ## 🚀 Authors
 [Raphaël Diacamille](https://github.com/rdia9) \
-[Raphaël Diacamille](https://github.com/paulbaudrier) \
+[Paul Baudrier](https://github.com/paulbaudrier) \
 [Paul Waldburger](https://github.com/Paul-Waldburger-BTPConsultants)
