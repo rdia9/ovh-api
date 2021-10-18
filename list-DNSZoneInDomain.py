@@ -8,6 +8,7 @@ import ovh # export ovh api
 import os # pour récupérer les variables d'env
 import re # import regex
 
+
 # Instantiate. Visit https://api.ovh.com/createToken/?GET=/me
 # # to get your credentials
 client = ovh.Client(
@@ -48,3 +49,4 @@ for domain in domains:
                 if(i != len(tmp)-1):
                     print(';', end='')
             print()
+
