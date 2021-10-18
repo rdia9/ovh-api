@@ -10,10 +10,10 @@ import re # import regex
 # Instantiate. Visit https://api.ovh.com/createToken/?GET=/me
 # # to get your credentials
 client = ovh.Client(
-	endpoint='ovh-eu',
-	application_key='XXXXXXXXXXXXXXXXXXXXXXXX',
-	application_secret='XXXXXXXXXXXXXXXXXXXXXXXXXX',
-	consumer_key='XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+	endpoint="${{ secrets.ENDPOINT }}",
+	application_key="${{ secrets.APPLICATION_KEY }}",
+	application_secret="${{ secrets.APPLICATION_SECRET }}",
+	consumer_key="${{ secrets.CONSUMER_KEY }}",
 )
 # Print dns zone for each domain
 
