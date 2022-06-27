@@ -31,5 +31,5 @@ jobs:
         ovh_application_secret: ${{ secrets.APPLICATION_SECRET }}
         ovh_consumer_key: ${{ secrets.CONSUMER_KEY }}
       run: |
-       python3 list-DNSZoneInDomain.py
-       python3 list-domain.py
+       python3 List-DNSZoneInDomain.py
+       python3 List-Domain.py
