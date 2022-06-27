@@ -1,24 +1,26 @@
-ovh-api
-==================
+# ovh-api
 
 Ce repository permet des extractions simplifiées via l'API OVH
 
+## Requirements
 
-Requirements
-------------
+- python
+- pip install ovh
+- .env with completed with values
+  - ovh_endpoint
+  - ovh_application_key
+  - ovh_application_secret
+  - ovh_consumer_key
 
-* python
-* pip install ovh
+## Execution
 
-
-Execution
-------------
+```bash
+python3 List-Domain.py > domainList.txt
+python3 List-DNSZoneInDomain.py > DNSZoneList.csv
 ```
-python3 list-domain.py > domainList.txt
-python3 list-DNSZoneInDomain.py > DNSZoneList.csv
-```
 
-## 🚀 Authors
+## ✒️ Authors
+
 [Raphaël Diacamille](https://github.com/rdia9) \
 [Paul Baudrier](https://github.com/paulbaudrier) \
 [Paul Waldburger](https://github.com/Paul-Waldburger-BTPConsultants)
