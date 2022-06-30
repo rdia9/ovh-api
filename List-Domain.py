@@ -1,16 +1,26 @@
 # -*- encoding: utf-8 -*-
 #
 
+import json
 import ovh # export ovh api
 import os # pour récupérer les variables d'env
+from decouple import config
 
 # Instantiate. Visit https://api.ovh.com/createToken/?GET=/me
 # # to get your credentials
 client = ovh.Client(
-	endpoint= os.environ['ovh_endpoint'] ,
-	application_key= os.environ['ovh_application_key'] ,
-	application_secret= os.environ['ovh_application_secret'] ,
-	consumer_key= os.environ['ovh_consumer_key'] ,
+	endpoint= config('ovh_endpoint') ,
+	application_key= config('ovh_application_key') ,
+	application_secret= config('ovh_application_secret') ,
+	consumer_key= config('ovh_consumer_key') ,
 )
-# Print every domain you have
-print(client.get('/domain/zone/'))
+
+# print headers
+print('"domain"')
+
+# Print dns zone for each domain
+domains = client.get('/domain/zone/')
+for i, elem in enumerate(domains):
+	print('"' + elem + '"', end='')
+	print()
+

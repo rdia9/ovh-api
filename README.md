@@ -15,7 +15,7 @@ Ce repository permet des extractions simplifiées via l'API OVH
 ## Execution
 
 ```bash
-python3 List-Domain.py > domainList.txt
+python3 List-Domain.py > DomainList.csv
 python3 List-DNSZoneInDomain.py > DNSZoneList.csv
 ```
 
