@@ -1,3 +1,5 @@
+[![GitHub Super-Linter](https://github.com/rdia9/ovh-api/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
+
 # ovh-api
 
 Ce repository permet des extractions simplifiées via l'API OVH
