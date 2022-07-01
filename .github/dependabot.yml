@@ -1,0 +1,17 @@
+---
+# Basic set up for github action / docker / terraform
+
+version: 2
+updates:
+
+  # Maintain dependencies for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+
+  # Maintain dependencies for Terraform
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "daily"
