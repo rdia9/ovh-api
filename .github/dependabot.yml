@@ -10,7 +10,7 @@ updates:
       interval: "daily"
 
   # Maintain dependencies for Terraform
-  - package-ecosystem: "terraform"
+  - package-ecosystem: "pip"
     directory: "/"
     schedule:
       interval: "daily"
