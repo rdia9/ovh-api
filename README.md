@@ -6,6 +6,12 @@ Ce repository permet des extractions simplifiées via l'API OVH
 
 ## Requirements
 
+### 📍 Location
+
+IP from OVH or SQY
+
+### 🛠️ Packages
+
 - python
 - pip install ovh
 - .env with completed with values

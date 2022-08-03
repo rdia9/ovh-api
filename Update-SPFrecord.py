@@ -8,7 +8,7 @@ from decouple import config
 # "prevention-consultants.com" is the only one not excluded for test
 exclude_domains = ["crysalide.fr","nextiim.com","citybuildr.io","parkyze.org","monitoring-environnemental.fr","batily.eu","btpdiagnostics.com","parkyze.net","btp-diagnostics.com","btp-consultants-monaco.fr","naval-check.com","btpdiagnostic.com","batidigi.fr","parkyze.fr","btpdiagnostic.fr","btp-diagnostic.fr","databuildr.com","groupe-btp-consultants.fr","btp-consultants.fr","batidigi.com","naval-check.fr","signaletique-for-all.fr","btp-mornings.fr","citybuildr.com","bimscreen.com","deepbim.fr","batily.org","databuildr.net","btp-consultants.com","batily.fr","parkyze.co","novalian.io","citybuild.fr","btpdiagnostics.fr","batidigi.ovh","batidigi.org","faqplus.fr","bet-accessibilite.com","btp-consultants.net","batidigi.eu","formactu.com","databuildr.ovh","batily.cloud","databuildr.eu","deepbim.io","btp-diagnostic.com","databuildr.cloud","groupe-btp-consultants.com","batily.net","databuildr.org","groupe-btpconsultants.com","batidigi.cloud","batily.ovh","databuildr.fr","parkyze.eu","citae.fr","parkyze.in","btp-mornings.com","mbacity.com","formactu.fr","parkyze.com","novalian.fr","btp-diagnostics.fr","navalcheck.fr","groupe-btpconsultants.fr","prevention-consultants.net","groupe-btp.fr","batiment-numerique-bimpourtous.fr","parkyze.io","mbacity.fr","citae-patrimoine.com","navalcheck.com","bimscreen.fr","betaccessibilite.com","groupebtp.com","batidigi.net","groupebtp.fr","btp-consultants.org","batiment-numerique-bimpourtous.com","bet-access.com","citae-patrimoine.fr","groupe-btp.com","citybuildr.fr","batily.com"]
 # exclude_domains = ["btp-consultants.fr","citae.fr","mbacity.com","btp-diagnostics.fr","groupebtp.fr"]
-spf_value = "\"v=spf1 ip4:54.77.12.176/32 ip4:37.59.248.160/28 ip4:185.183.65.201 include:_spf.google.com include:amazonses.com ~all\""
+spf_value = "\"v=spf1 ip4:37.59.248.160/28 ip4:185.183.65.201 include:_spf.google.com include:amazonses.com ~all\""
 
 """
 To create OVH api credentials go there https://eu.api.ovh.com/createToken/
@@ -23,10 +23,10 @@ To create OVH api credentials go there https://eu.api.ovh.com/createToken/
 class SPFClient:
     def __init__(self, application_key, application_secret, consumer_key):
         self.client = ovh.Client(
-            endpoint=config('ovh_endpoint'),
+            endpoint="ovh-eu",
             application_key=config('ovh_application_key'),
             application_secret=config('ovh_application_secret'),
-            consumer_key=('ovh_consumer_key'),
+            consumer_key=config('ovh_consumer_key'),
         )
 
     def get_zones(self) -> List[str]:
