@@ -4,7 +4,7 @@ import os # pour récupérer les variables d'env
 from decouple import config
 
 exclude_domains = ["btp-consultants.fr","citae.fr","mbacity.com","btp-diagnostics.fr","groupebtp.fr"]
-dmarc_value = "\"v=DMARC1; p=reject; rua=mailto:dmarc@mailinblue.com!10m; ruf=mailto:dmarc@mailinblue.com!10m; rf=afrf; pct=100; ri=86400\""
+dmarc_value = str("v=DMARC1; p=none; rua=mailto:rsi@btp-consultants.fr; ruf=mailto:rsi@btp-consultants.fr; rf=afrf; pct=100; ri=86400")
 
 """
 To create OVH api credentials go there https://eu.api.ovh.com/createToken/
@@ -41,7 +41,7 @@ class DMARCClient:
         return self.client.get('/domain/zone/%s/record/%s' % (zone, record))
 
     def set_record(self, zone, value):
-        return self.client.post('/domain/zone/%s/record' % zone, target=value, fieldType="DMARC", ttl=3600)
+        return self.client.post('/domain/zone/%s/record' % zone, target=value, fieldType="DMARC", ttl=3600, subDomain="_dmarc")
 
     def set_dmarc(self, zone: str, dmarc: str):
         record = self.get_dmarc(zone)

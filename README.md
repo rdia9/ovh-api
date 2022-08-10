@@ -24,8 +24,10 @@ IP from OVH or SQY
 
 ```bash
 pip3 install -r requirement.txt
-python3 List-Domain.py > DomainList.csv
-python3 List-DNSZoneInDomain.py > DNSZoneList.csv
+python3 List-Domains.py > DomainsList.csv
+python3 List-DNSZoneIsnDomains.py > DNSZonesList.csv
+python3 Update-SPFrecords.py > Update-SPFrecords.log
+python3 Update-DMARCrecords.py > UpdateDMARCrecords.log
 ```
 
 ## ✒️ Authors

@@ -1,14 +1,10 @@
-
-
 from typing import List
 import ovh # export ovh api
 import os # pour récupérer les variables d'env
 from decouple import config
 
-# "prevention-consultants.com" is the only one not excluded for test
-
 exclude_domains = ["btp-consultants.fr","citae.fr","mbacity.com","btp-diagnostics.fr","groupebtp.fr"]
-spf_value = "\"v=spf1 ip4:37.59.248.160/28 ip4:185.183.65.201 include:_spf.google.com include:amazonses.com ~all\""
+spf_value = str("v=spf1 ip4:37.59.248.160/28 ip4:185.183.65.201 include:_spf.google.com include:amazonses.com ~all")
 
 """
 To create OVH api credentials go there https://eu.api.ovh.com/createToken/
