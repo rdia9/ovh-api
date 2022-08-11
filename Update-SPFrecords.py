@@ -5,17 +5,6 @@ from decouple import config
 
 exclude_domains = ["btp-consultants.fr","citae.fr","mbacity.com","btp-diagnostics.fr","groupebtp.fr"]
 spf_value = str("v=spf1 ip4:37.59.248.160/28 ip4:185.183.65.201 include:_spf.google.com include:amazonses.com ~all")
-
-"""
-To create OVH api credentials go there https://eu.api.ovh.com/createToken/
-// It needs the following Endpoints :
-// - GET /domain/zone
-// - GET /domain/zone/*/record
-// - GET /domain/zone/*/record/*
-// - PUT /domain/zone/*/record/*
-// - POST /domain/zone/*/record
-"""
-
 class SPFClient:
     def __init__(self, application_key, application_secret, consumer_key):
         self.client = ovh.Client(
@@ -41,7 +30,7 @@ class SPFClient:
         return self.client.get('/domain/zone/%s/record/%s' % (zone, record))
 
     def set_record(self, zone, value):
-        return self.client.post('/domain/zone/%s/record' % zone, target=value, fieldType="SPF", ttl=60)
+        return self.client.post('/domain/zone/%s/record' % zone, target=value, fieldType="SPF", ttl=3600)
 
     def set_spf(self, zone: str, spf: str):
         record = self.get_spf(zone)
@@ -54,12 +43,16 @@ class SPFClient:
         return
 
     def update_record(self, zone: str, value: str, record_id: str):
-        return self.client.put('/domain/zone/%s/record/%s' % (zone, record_id), target=value)
+        return self.client.put('/domain/zone/%s/record/%s' % (zone, record_id), target=value, ttl=3600)
+
+    def refresh_zone(self, zone: str):
+        print("Refresh zone %s" % (zone))
+        return self.client.post('/domain/zone/%s/refresh' % zone)
 
     def set_spf_all(self, spf: str):
         for zo in self.get_zones():
             self.set_spf(zo, spf)
-
+            self.refresh_zone(zo)
 
 client = SPFClient(application_key="", application_secret="",
                    consumer_key="")

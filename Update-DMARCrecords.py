@@ -5,17 +5,6 @@ from decouple import config
 
 exclude_domains = ["btp-consultants.fr","citae.fr","mbacity.com","btp-diagnostics.fr","groupebtp.fr"]
 dmarc_value = str("v=DMARC1; p=none; rua=mailto:rsi@btp-consultants.fr; ruf=mailto:rsi@btp-consultants.fr; rf=afrf; pct=100; ri=86400")
-
-"""
-To create OVH api credentials go there https://eu.api.ovh.com/createToken/
-// It needs the following Endpoints :
-// - GET /domain/zone
-// - GET /domain/zone/*/record
-// - GET /domain/zone/*/record/*
-// - PUT /domain/zone/*/record/*
-// - POST /domain/zone/*/record
-"""
-
 class DMARCClient:
     def __init__(self, application_key, application_secret, consumer_key):
         self.client = ovh.Client(
@@ -54,12 +43,16 @@ class DMARCClient:
         return
 
     def update_record(self, zone: str, value: str, record_id: str):
-        return self.client.put('/domain/zone/%s/record/%s' % (zone, record_id), target=value)
+        return self.client.put('/domain/zone/%s/record/%s' % (zone, record_id), target=value, ttl=3600)
+
+    def refresh_zone(self, zone: str):
+        print("Refresh zone %s" % (zone))
+        return self.client.post('/domain/zone/%s/refresh' % zone)
 
     def set_dmarc_all(self, dmarc: str):
         for zo in self.get_zones():
             self.set_dmarc(zo, dmarc)
-
+            self.refresh_zone(zo)
 
 client = DMARCClient(application_key="", application_secret="",
                    consumer_key="")
