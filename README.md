@@ -20,7 +20,7 @@ IP from OVH or SQY
   - ovh_application_secret (keepass)
   - ovh_consumer_key (keepass)
 
-To create OVH api credentials go there <https://eu.api.ovh.com/createToken/>
+To create OVH API credentials go there <https://eu.api.ovh.com/createToken/>
 // It needs the following Endpoints :
 // - GET /domain/zone
 // - GET /domain/zone/*/record
