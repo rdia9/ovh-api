@@ -1,6 +1,6 @@
 
-import ovh # export ovh api
 import os # pour récupérer les variables d'env
+import ovh # export ovh api
 from decouple import config
 from typing import List
 
@@ -24,8 +24,8 @@ class OVHClient:
         return self.client.post('/domain/zone/%s/dnssec' % zone)
 
     def set_dnssec_all(self):
-        for zo in self.get_zones():
-            self.set_dnssec(zo)
+        for zzone in self.get_zones():
+            self.set_dnssec(zzone)
 
 client = OVHClient(application_key="", application_secret="",
                    consumer_key="")
