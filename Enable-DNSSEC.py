@@ -1,7 +1,8 @@
-from typing import List
+
 import ovh # export ovh api
 import os # pour récupérer les variables d'env
 from decouple import config
+from typing import List
 
 included_domains = ["parkyze.net"]
 
