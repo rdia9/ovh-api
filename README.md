@@ -20,7 +20,7 @@ IP from OVH or SQY
   - ovh_application_secret (keepass)
   - ovh_consumer_key (keepass)
 
-To create OVH api credentials go there https://eu.api.ovh.com/createToken/
+To create OVH api credentials go there <https://eu.api.ovh.com/createToken/>
 // It needs the following Endpoints :
 // - GET /domain/zone
 // - GET /domain/zone/*/record
@@ -34,8 +34,9 @@ To create OVH api credentials go there https://eu.api.ovh.com/createToken/
 pip3 install -r requirement.txt
 python3 List-Domains.py > DomainsList.csv
 python3 List-DNSZoneIsnDomains.py > DNSZonesList.csv
-python3 Update-SPFrecords.py > Update-SPFrecords.log
-python3 Update-DMARCrecords.py > UpdateDMARCrecords.log
+python3 Update-SPFrecords.py > UpdateSPFrecords.log # Noter dans le script les domaines à exclure
+python3 Update-DMARCrecords.py > UpdateDMARCrecords.log # Noter dans le script les domaines à exclure
+python3 Enable-DNSSEC.py > EnableDNSSEC.log # Noter dans le script des domaines à inclure
 ```
 
 ## ✒️ Authors
