@@ -1,10 +1,12 @@
 from typing import List
-import ovh # export ovh api
-import os # pour récupérer les variables d'env
+import ovh  # export ovh api
+import os  # pour récupérer les variables d'env
 from decouple import config
 
-exclude_domains = ["btp-consultants.fr","citae.fr","mbacity.com","btp-diagnostics.fr","groupebtp.fr"]
+exclude_domains = ["btp-consultants.fr", "citae.fr", "mbacity.com", "btp-diagnostics.fr", "groupebtp.fr"]
 dmarc_value = str("v=DMARC1; p=none; rua=mailto:rsi@btp-consultants.fr; ruf=mailto:rsi@btp-consultants.fr; rf=afrf; pct=100; ri=86400")
+
+
 class DMARCClient:
     def __init__(self, application_key, application_secret, consumer_key):
         self.client = ovh.Client(
@@ -53,6 +55,7 @@ class DMARCClient:
         for zo in self.get_zones():
             self.set_dmarc(zo, dmarc)
             self.refresh_zone(zo)
+
 
 client = DMARCClient(application_key="", application_secret="",
                    consumer_key="")

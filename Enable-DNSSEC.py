@@ -1,10 +1,11 @@
 
-import os # pour récupérer les variables d'env
-import ovh # export ovh api
+import os  # pour récupérer les variables d'env
+import ovh  # export ovh api
 from decouple import config
 from typing import List
 
 included_domains = ["parkyze.net"]
+
 
 class OVHClient:
     def __init__(self, application_key, application_secret, consumer_key):
@@ -19,13 +20,14 @@ class OVHClient:
         zones = self.client.get("/domain/zone")
         return [i for i in zones if i in included_domains]
 
-    def set_dnssec(self, zone :str):
+    def set_dnssec(self, zone: str):
         print("Setting DNSSEC for domain %s" % (zone))
         return self.client.post('/domain/zone/%s/dnssec' % zone)
 
     def set_dnssec_all(self):
         for zzone in self.get_zones():
             self.set_dnssec(zzone)
+
 
 client = OVHClient(application_key="", application_secret="",
                    consumer_key="")
