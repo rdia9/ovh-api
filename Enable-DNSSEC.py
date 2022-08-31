@@ -4,7 +4,7 @@ import ovh  # export ovh api
 from decouple import config
 from typing import List
 
-included_domains = ["parkyze.net"]
+included_domains = ["btp-mornings.com","groupe-btpconsultants.fr","mbacity.fr","signaletique-for-all.fr"]
 
 
 class OVHClient:
