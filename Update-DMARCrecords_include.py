@@ -25,7 +25,7 @@ class DMARCClient:
                                   % zone)
         for record in records:
             r = self.get_record(zone, record)
-            if r["target"].startswith("\"v=DMARC1"):
+            if r["target"].startswith("v=DMARC1"):
                 return record
         return
 
