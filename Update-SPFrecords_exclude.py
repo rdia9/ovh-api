@@ -3,8 +3,8 @@ import ovh  # export ovh api
 import os  # pour récupérer les variables d'env
 from decouple import config
 
-exclude_domains = ["btp-consultants.fr", "citae.fr", "mbacity.com", "btp-diagnostics.fr", "groupebtp.fr"]
-spf_value = str("v=spf1 ip4:37.59.248.160/28 ip4:185.183.65.201 include:_spf.google.com include:amazonses.com ~all")
+exclude_domains = ["btp-consultants.fr", "citae.fr", "mbacity.com", "btp-diagnostics.fr", "navalcheck.fr","parkyze.com","btp-mornings.fr","citybuild.fr","databuildr.com","formactu.fr","groupe-btpconsultants.fr","nextiim.com","novalian.com","novalian.fr","novalian.io"]
+spf_value = str("v=spf1 ip4:37.59.248.160/28 ip4:185.183.65.201 include:_spf.google.com include:amazonses.com -all")
 
 
 class SPFClient:
