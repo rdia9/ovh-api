@@ -1,10 +1,12 @@
 from typing import List
-import ovh # export ovh api
-import os # pour récupérer les variables d'env
+import ovh  # export ovh api
+import os  # pour récupérer les variables d'env
 from decouple import config
 
-exclude_domains = ["btp-consultants.fr","citae.fr","mbacity.com","btp-diagnostics.fr","groupebtp.fr"]
+include_domains = ["mbacity.com"]
 spf_value = str("v=spf1 ip4:37.59.248.160/28 ip4:185.183.65.201 include:_spf.google.com include:amazonses.com ~all")
+
+
 class SPFClient:
     def __init__(self, application_key, application_secret, consumer_key):
         self.client = ovh.Client(
@@ -16,7 +18,7 @@ class SPFClient:
 
     def get_zones(self) -> List[str]:
         zones = self.client.get("/domain/zone")
-        return [i for i in zones if i not in exclude_domains]
+        return [i for i in zones if i in include_domains]
 
     def get_spf(self, zone):
         records = self.client.get('/domain/zone/%s/record?fieldType=SPF' % zone)
@@ -39,7 +41,7 @@ class SPFClient:
             self.set_record(zone, spf)
         else:
             print("Updating spf %s for record %s" % (spf, zone))
-            self.update_record(zone,spf_value, str(record))
+            self.update_record(zone, spf_value, str(record))
         return
 
     def update_record(self, zone: str, value: str, record_id: str):
@@ -53,6 +55,7 @@ class SPFClient:
         for zo in self.get_zones():
             self.set_spf(zo, spf)
             self.refresh_zone(zo)
+
 
 client = SPFClient(application_key="", application_secret="",
                    consumer_key="")
