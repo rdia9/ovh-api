@@ -4,19 +4,19 @@
 First, install the latest release of Python wrapper: $ pip install ovh
 '''
 import json
-import ovh # export ovh api
-import os # pour récupérer les variables d'env
-import re # import regex
+import ovh  # export ovh api
+import os  # pour récupérer les variables d'env
+import re  # import regex
 from decouple import config
 
 
 # Instantiate. Visit https://api.ovh.com/createToken/?GET=/me
 # # to get your credentials
 client = ovh.Client(
-	endpoint= config('ovh_endpoint') ,
-	application_key= config('ovh_application_key') ,
-	application_secret= config('ovh_application_secret') ,
-	consumer_key= config('ovh_consumer_key') ,
+    endpoint=config('ovh_endpoint'),
+    application_key=config('ovh_application_key'),
+    application_secret=config('ovh_application_secret'),
+    consumer_key=config('ovh_consumer_key'),
 )
 
 # print headers
@@ -32,16 +32,14 @@ for domain in domains:
     regex2 = '.*IN.CNAME.*'
     regexList = [regex1, regex2]
 
-
-
     for regex in regexList:
         filtereddetails = re.findall(regex, detailssansovh)
         for finding in filtereddetails:
             tmp = finding.split()
 
             # cas sous domaine vide
-            if(tmp[0]=='IN'):
-                tmp.insert(0,'')
+            if (tmp[0] == 'IN'):
+                tmp.insert(0, '')
 
             # remove 'IN'
             tmp.remove('IN')
@@ -51,7 +49,6 @@ for domain in domains:
 
             for i, elem in enumerate(tmp):
                 print('"' + elem + '"', end='')
-                if(i != len(tmp)-1):
+                if (i != len(tmp)-1):
                     print(';', end='')
             print()
-
