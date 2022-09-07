@@ -3,7 +3,7 @@ import ovh  # export ovh api
 import os  # pour récupérer les variables d'env
 from decouple import config
 
-exclude_domains = ["btp-consultants.fr", "citae.fr", "mbacity.com", "btp-diagnostics.fr", "navalcheck.fr","parkyze.com","btp-mornings.fr","citybuild.fr","databuildr.com","formactu.fr","groupe-btpconsultants.fr","nextiim.com","novalian.com","novalian.fr","novalian.io"]
+exclude_domains = ["bimscreen.fr","btp-consultants.fr", "citae.fr", "mbacity.com", "btp-diagnostics.fr", "navalcheck.fr","parkyze.com","btp-mornings.fr","citybuild.fr","databuildr.com","formactu.fr","groupe-btpconsultants.fr","nextiim.com","novalian.com","novalian.fr","novalian.io"]
 dmarc_value = str("v=DMARC1; p=reject; rua=mailto:rsi@btp-consultants.fr; ruf=mailto:rsi@btp-consultants.fr; rf=afrf; pct=100; ri=86400")
 
 

@@ -3,10 +3,9 @@ import ovh  # export ovh api
 import os  # pour récupérer les variables d'env
 from decouple import config
 
-print ("Before running this script, make sure you are on OVH or SQY network.")
-print ("BE VERY CAREFULL, IT CAN CHANGE MANY THINGS ON DOMAINS.")
+print ("This script only works on OVH or SQY network.")
 
-include_domains = ["batidigi.com"]
+include_domains = ["citybuildr.io"]
 dmarc_value = str("v=DMARC1; p=reject; rua=mailto:rsi@btp-consultants.fr; ruf=mailto:rsi@btp-consultants.fr; rf=afrf; pct=100; ri=86400")
 
 
