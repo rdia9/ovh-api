@@ -4,7 +4,7 @@ import ovh  # export ovh api
 from decouple import config
 from typing import List
 
-included_domains = ["parkyze.com"]
+included_domains = ["navalcheck.fr"]
 
 
 class OVHClient:
@@ -20,13 +20,18 @@ class OVHClient:
         zones = self.client.get("/domain/zone")
         return [i for i in zones if i in included_domains]
 
-    def get_dnssec(self, zone: str):
+    def get_dnssec(self, zone):
         print("Getting DNSSEC for domain %s" % (zone))
         return self.client.get('/domain/zone/%s/dnssec' % zone)
 
     def set_dnssec(self, zone: str):
-        print("Setting DNSSEC for domain %s" % (zone))
-        return self.client.post('/domain/zone/%s/dnssec' % zone)
+        record = self.get_dnssec(zone)
+        if not record:
+            print("Setting DNSSEC for domain %s" % (zone))
+            return self.client.post('/domain/zone/%s/dnssec' % zone)
+        else:
+            print(" DNSSEC for domain %s already activated" % (zone))
+        return
 
     def set_dnssec_all(self):
         for zzone in self.get_zones():
