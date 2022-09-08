@@ -20,13 +20,14 @@ IP from OVH or SQY
   - ovh_application_secret (keepass)
   - ovh_consumer_key (keepass)
 
-To create OVH API credentials go there <https://eu.api.ovh.com/createToken/>
-// It needs the following Endpoints :
-// - GET /domain/zone
-// - GET /domain/zone/*/record
-// - GET /domain/zone/*/record/*
-// - PUT /domain/zone/*/record/*
-// - POST /domain/zone/*/record
+To create OVH API credentials go there <https://eu.api.ovh.com/createToken/> \
+ It needs the following Endpoints :
+
+- GET /domain/zone
+- GET /domain/zone/*/record
+- GET /domain/zone/*/record/*
+- PUT /domain/zone/*/record/*
+- POST /domain/zone/*/record
 
 ## Execution
 
@@ -38,7 +39,8 @@ python3 Update-SPFrecords_include.py > UpdateSPFrecords_include.log # Noter dans
 python3 Update-SPFrecords_exclude.py > UpdateSPFrecords_exclude.log # Noter dans le script les domaines à exclure
 python3 Update-DMARCrecords_include.py > UpdateDMARCrecords_include.log # Noter dans le script les domaines à inclure
 python3 Update-DMARCrecords_exclude.py > UpdateDMARCrecords_exluded.log # Noter dans le script les domaines à exclure
-python3 Enable-DNSSEC.py > EnableDNSSEC.log
+python3 Enable-DNSSEC_exclude > EnableDNSSEC_excluded.log # Noter dans le script les domaines à exclure
+python3 Enable-DNSSEC_include > EnableDNSSEC_included.log # Noter dans le script les domaines à inclure
 ```
 
 ## ✒️ Authors
