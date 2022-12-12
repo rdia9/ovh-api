@@ -80,7 +80,7 @@ python3 Enable-DNSSEC_include > EnableDNSSEC_included.log
 - Action sur une IP spécifique
 
 ```bash
-python3 Delete-Releveplus-Crysalide.py > delete-Releveplus.log
+python3 Delete-A-Batily-test.py > delete-Releveplus.log
 # Renseigner le/les domaine(s) dans le script ainsi que l'IP à supprimer
 ```
 
