@@ -31,9 +31,9 @@ class DMARCClient:
     def __init__(self, application_key, application_secret, consumer_key):
         self.client = ovh.Client(
             endpoint="ovh-eu",
-            application_key=config("ovh_application_key"),
-            application_secret=config("ovh_application_secret"),
-            consumer_key=config("ovh_consumer_key"),
+            application_key=config("OVH_APPLICATION_KEY"),
+            application_secret=config("OVH_APPLICATION_SECRET"),
+            consumer_key=config("OVH_CONSUMER_KEY"),
         )
 
     def get_zones(self) -> List[str]:

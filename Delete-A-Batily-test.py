@@ -20,9 +20,9 @@ class OVHClient:
     def __init__(self, application_key, application_secret, consumer_key):
         self.client = ovh.Client(
             endpoint="ovh-eu",
-            application_key=config("ovh_application_key"),
-            application_secret=config("ovh_application_secret"),
-            consumer_key=config("ovh_consumer_key"),
+            application_key=config("OVH_APPLICATION_KEY"),
+            application_secret=config("OVH_APPLICATION_SECRET"),
+            consumer_key=config("OVH_CONSUMER_KEY"),
         )
 
     def get_record_type_a(self, zone):
@@ -73,5 +73,6 @@ class OVHClient:
             self.refresh_zone(zo)
         print("Script ended successfully")
 
+client = OVHClient(application_key="", application_secret="", consumer_key="")
+client.set_all()
 
-OVHClient.set_all()

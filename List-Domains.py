@@ -10,10 +10,10 @@ from decouple import config
 # Instantiate. Visit https://api.ovh.com/createToken/?GET=/me
 # # to get your credentials
 client = ovh.Client(
-    endpoint=config("ovh_endpoint"),
-    application_key=config("ovh_application_key"),
-    application_secret=config("ovh_application_secret"),
-    consumer_key=config("ovh_consumer_key"),
+    endpoint=config("OVH_ENDPOINT"),
+    application_key=config("OVH_APPLICATION_KEY"),
+    application_secret=config("OVH_APPLICATION_SECRET"),
+    consumer_key=config("OVH_CONSUMER_KEY"),
 )
 
 # print headers
