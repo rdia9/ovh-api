@@ -1,6 +1,6 @@
 # OVH API
 
-[![GitHub Super-Linter](https://github.com/rdia9/ovh-api/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
+[![GitHub Super-Linter](https://github.com/rdia9/ovh-api/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/rdia9/ovh-api/actions/workflows/linter.yml)
 
 Ce repository permet des extractions simplifiées via l'API OVH
 
@@ -29,22 +29,62 @@ To create OVH API credentials go there <https://eu.api.ovh.com/createToken/> \
 - PUT /domain/zone/*/record/*
 - POST /domain/zone/*/record
 
+### Python
+
+```pip3 install -r requirement.txt```
+
 ## Execution
 
+- Inventorier
+
 ```bash
-pip3 install -r requirement.txt
+# Lister les domaines
 python3 List-Domains.py > DomainsList.csv
+```
+
+```bash
+# Lister les Urls publiées
 python3 List-DNSZoneIsnDomains.py > DNSZonesList.csv
-python3 Update-SPFrecords_include.py > UpdateSPFrecords_include.log # Noter dans le script les domaines à inclure
-python3 Update-SPFrecords_exclude.py > UpdateSPFrecords_exclude.log # Noter dans le script les domaines à exclure
-python3 Update-DMARCrecords_include.py > UpdateDMARCrecords_include.log # Noter dans le script les domaines à inclure
-python3 Update-DMARCrecords_exclude.py > UpdateDMARCrecords_exluded.log # Noter dans le script les domaines à exclure
-python3 Enable-DNSSEC_exclude > EnableDNSSEC_excluded.log # Noter dans le script les domaines à exclure
-python3 Enable-DNSSEC_include > EnableDNSSEC_included.log # Noter dans le script les domaines à inclure
+```
+
+- Action sur les SPF
+
+```bash
+python3 Update-SPFrecords_include.py > UpdateSPFrecords_include.log
+# Noter dans le script les domaines à inclure
+
+python3 Update-SPFrecords_exclude.py > UpdateSPFrecords_exclude.log
+# Noter dans le script les domaines à exclure
+```
+
+- Action sur les DMARC
+
+```bash
+python3 Update-DMARCrecords_include.py > UpdateDMARCrecords_include.log
+# Noter dans le script les domaines à inclure
+
+python3 Update-DMARCrecords_exclude.py > UpdateDMARCrecords_exluded.log
+# Noter dans le script les domaines à exclure
+```
+
+- Action sur les DNSSEC
+
+```bash
+python3 Enable-DNSSEC_exclude > EnableDNSSEC_excluded.log
+# Noter dans le script les domaines à exclure
+
+python3 Enable-DNSSEC_include > EnableDNSSEC_included.log
+# Noter dans le script les domaines à inclure
+```
+
+- Action sur une IP spécifique
+
+```bash
+python3 Delete-Releveplus-Crysalide.py > delete-Releveplus.log
+# Renseigner le/les domaine(s) dans le script ainsi que l'IP à supprimer
 ```
 
 ## ✒️ Authors
 
 [Raphaël Diacamille](https://github.com/rdia9) \
-[Paul Baudrier](https://github.com/paulbaudrier) \
-[Paul Waldburger](https://github.com/Paul-Waldburger-BTPConsultants)
+[Paul Baudrier](https://github.com/paulbaudrier)
