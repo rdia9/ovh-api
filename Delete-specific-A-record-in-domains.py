@@ -8,12 +8,12 @@ from decouple import config
 ###############################################################
 #           RENSEIGNEZ LE(S) NOM(S) DE DOMAINES               #
 ###############################################################
-include_domains = ["crysalide.fr"]
+include_domains = ["citae.fr"]
 
 ###############################################################
 #           RENSEIGNEZ L'ADRESSE IP A SUPPRIMER               #
 ###############################################################
-address_to_delete = "37.59.56.80"
+address_to_delete = "54.194.75.31"
 
 class OVHClient:
     def __init__(self, application_key, application_secret, consumer_key):
