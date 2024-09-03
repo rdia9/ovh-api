@@ -1,6 +1,7 @@
 *.csv
 *.log
 megalinter-reports/
+.envrc
 
 # Created by https://www.toptal.com/developers/gitignore/api/git,notepadpp,vs,python
 # Edit at https://www.toptal.com/developers/gitignore?templates=git,notepadpp,vs,python
