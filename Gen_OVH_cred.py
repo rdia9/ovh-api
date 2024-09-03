@@ -9,11 +9,12 @@ import sys
 # Get our current IP address as we will need it to restrict our rigths later
 my_IP = requests.get("https://ifconfig.me").text
 
+
 # create a client using configuration
 client = ovh.Client(
-    endpoint='ovh-eu',               # Endpoint of API OVH Europe
-    application_key="1d3314d0a740a03b", # Lootibox (TO DO : change for a more appropriate app)
-    application_secret="221290f188399bb78ef4fa195f639b69" # TO DO : change accortingly to the new application chosen
+    endpoint=str(os.getenv('OVH_ENDPOINT')),               # Endpoint of API OVH Europe
+    application_key=str(os.getenv('OVH_APPLICATION_KEY')), # Lootibox (TO DO : change for a more appropriate app)
+    application_secret=str(os.getenv('OVH_APPLICATION_SECRET')) # TO DO : change accortingly to the new application chosen
 )
 
 # Request RO, /me API access
@@ -58,6 +59,6 @@ for credential_id in client.get('/me/api/credential'):
 print("Please find bellow your OVH credentials.")
 print("You should export them to your Bash env, as these values (especially the 'consumerKey') are not recorded anywhere else.")
 print(f"export OVH_ENDPOINT={str('ovh-eu')}")
-print(f"export OVH_APPLICATION_KEY={str('1d3314d0a740a03b')}")
-print(f"export OVH_APPLICATION_SECRET={str('221290f188399bb78ef4fa195f639b69')}")
+print(f"export OVH_APPLICATION_KEY={os.getenv('OVH_APPLICATION_KEY')}")
+print(f"export OVH_APPLICATION_SECRET={os.getenv('OVH_APPLICATION_SECRET')}")
 print(f"export OVH_CONSUMER_KEY={str(validation['consumerKey'])}")

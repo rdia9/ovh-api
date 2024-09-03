@@ -73,4 +73,3 @@ class OVHClient:
 
 client = OVHClient(application_key="", application_secret="", consumer_key="")
 client.set_all()
-
