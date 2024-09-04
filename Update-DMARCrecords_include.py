@@ -6,9 +6,9 @@ from decouple import config
 
 print("This script only works on OVH or SQY network.")
 
-include_domains = ["navalcheck.com"]
+include_domains = ["boas-services.fr"]
 dmarc_value = str(
-    "v=DMARC1; p=reject; rua=mailto:rsi@btp-consultants.fr; ruf=mailto:rsi@btp-consultants.fr; rf=afrf; pct=100; ri=86400"
+    "v=DMARC1; p=reject; rua=mailto:ipm4zpy@ar.glockapps.com; ruf=mailto:ipm4zpy@fr.glockapps.com; fo=1;"
 )
 
 
@@ -26,7 +26,7 @@ class DMARCClient:
         return [i for i in zones if i in include_domains]
 
     def get_dmarc(self, zone):
-        records = self.client.get("/domain/zone/%s/record?fieldType=DMARC" % zone)
+        records = self.client.get("/domain/zone/%s/record?fieldType=TXT" % zone)
         for record in records:
             r = self.get_record(zone, record)
             if r["target"].startswith("v=DMARC1"):
@@ -40,7 +40,7 @@ class DMARCClient:
         return self.client.post(
             "/domain/zone/%s/record" % zone,
             target=value,
-            fieldType="DMARC",
+            fieldType="TXT",
             ttl=3600,
             subDomain="_dmarc",
         )
@@ -57,7 +57,7 @@ class DMARCClient:
 
     def update_record(self, zone: str, value: str, record_id: str):
         return self.client.put(
-            "/domain/zone/%s/record/%s" % (zone, record_id), target=value, ttl=3600
+            "/domain/zone/%s/record/%s" % (zone, record_id), target=value
         )
 
     def refresh_zone(self, zone: str):

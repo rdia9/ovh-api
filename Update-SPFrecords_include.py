@@ -24,7 +24,7 @@ class SPFClient:
         return [i for i in zones if i in include_domains]
 
     def get_spf(self, zone):
-        records = self.client.get("/domain/zone/%s/record?fieldType=SPF" % zone)
+        records = self.client.get("/domain/zone/%s/record?fieldType=TXT" % zone)
         for record in records:
             r = self.get_record(zone, record)
             if r["target"].startswith('"v=spf1'):
@@ -36,7 +36,7 @@ class SPFClient:
 
     def set_record(self, zone, value):
         return self.client.post(
-            "/domain/zone/%s/record" % zone, target=value, fieldType="SPF", ttl=3600
+            "/domain/zone/%s/record" % zone, target=value, fieldType="TXT", ttl=3600
         )
 
     def set_spf(self, zone: str, spf: str):
@@ -51,7 +51,7 @@ class SPFClient:
 
     def update_record(self, zone: str, value: str, record_id: str):
         return self.client.put(
-            "/domain/zone/%s/record/%s" % (zone, record_id), target=value, ttl=3600
+            "/domain/zone/%s/record/%s" % (zone, record_id), target=value
         )
 
     def refresh_zone(self, zone: str):
